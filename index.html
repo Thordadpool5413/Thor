@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BloomBuddy | First Period Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>🌸 BloomBuddy</h1>
+      <p>
+        A gentle space for kids starting their first period — track your cycle,
+        log your mood, journal your day, and learn in words made for you.
+      </p>
+    </header>
+
+    <main class="app-grid">
+      <section class="card" aria-labelledby="cycle-title">
+        <h2 id="cycle-title">🩸 Period Tracker</h2>
+        <form id="period-form" class="stack">
+          <label>
+            Start date
+            <input type="date" id="period-start" required />
+          </label>
+          <label>
+            End date
+            <input type="date" id="period-end" required />
+          </label>
+          <button type="submit">Save period</button>
+        </form>
+        <p id="next-period" class="highlight"></p>
+        <ul id="period-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="mood-title">
+        <h2 id="mood-title">😊 Mood Check-In</h2>
+        <form id="mood-form" class="stack">
+          <label>
+            How are you feeling today?
+            <select id="mood-select" required>
+              <option value="">Pick one...</option>
+              <option>Happy</option>
+              <option>Tired</option>
+              <option>Crampy</option>
+              <option>Calm</option>
+              <option>Worried</option>
+              <option>Excited</option>
+            </select>
+          </label>
+          <label>
+            What helped today?
+            <input id="mood-note" maxlength="120" placeholder="Example: warm tea + nap" />
+          </label>
+          <button type="submit">Save mood</button>
+        </form>
+        <ul id="mood-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="journal-title">
+        <h2 id="journal-title">📔 Journal</h2>
+        <form id="journal-form" class="stack">
+          <label>
+            Write your thoughts
+            <textarea id="journal-entry" rows="4" maxlength="400" required placeholder="Today I felt..."></textarea>
+          </label>
+          <button type="submit">Save entry</button>
+        </form>
+        <ul id="journal-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="learn-title">
+        <h2 id="learn-title">🎓 Learn Zone</h2>
+        <div class="learn-stack">
+          <article>
+            <h3>What is a period?</h3>
+            <p>
+              A period is when blood leaves your body from your vagina. It means
+              your body is growing, and that's normal.
+            </p>
+          </article>
+          <article>
+            <h3>How long does it last?</h3>
+            <p>
+              Many periods last about 3 to 7 days. It can be different for each
+              person, and that's okay.
+            </p>
+          </article>
+          <article>
+            <h3>What can help with cramps?</h3>
+            <p>
+              Try a warm pad, water, rest, or gentle stretching. Ask a trusted
+              adult if pain feels strong.
+            </p>
+          </article>
+          <article>
+            <h3>When should I ask for help?</h3>
+            <p>
+              If you feel very scared, very sad, dizzy, or have very heavy
+              bleeding, talk to a parent, guardian, school nurse, or doctor.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        💖 Reminder: You are not alone. Your feelings matter.
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

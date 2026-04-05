@@ -1,0 +1,143 @@
+:root {
+  --bg: #fff7fb;
+  --card: #ffffff;
+  --ink: #3a2042;
+  --soft: #7d4d8a;
+  --accent: #ff7eb6;
+  --accent-2: #9f7aea;
+  --border: #f3d9ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(180deg, #fff0f7 0%, #fff9fc 100%);
+  color: var(--ink);
+}
+
+.hero {
+  padding: 2rem 1rem 1.25rem;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.hero p {
+  max-width: 780px;
+  margin: 0.75rem auto 0;
+  line-height: 1.45;
+}
+
+.app-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(125, 77, 138, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--soft);
+}
+
+.stack {
+  display: grid;
+  gap: 0.65rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #d8bfd8;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 0.9rem;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.05);
+}
+
+.highlight {
+  font-weight: 700;
+  background: #f8f0ff;
+  border-left: 4px solid var(--accent-2);
+  padding: 0.55rem;
+  border-radius: 8px;
+}
+
+.list {
+  margin: 0.8rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.learn-stack {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.learn-stack article {
+  border: 1px solid #eed6f8;
+  border-radius: 12px;
+  padding: 0.7rem;
+  background: #fffbff;
+}
+
+.learn-stack h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #7d4d8a;
+}
+
+.learn-stack p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 1rem 1.8rem;
+  color: #74477f;
+}
