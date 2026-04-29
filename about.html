@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>thordad.com | About Me</title><link rel="stylesheet" href="styles.css" /></head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>thordad.com | About Me</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
   <body>
-    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">thordad<span>.com</span></a><nav aria-label="Primary"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a class="active" href="about.html">About Me</a></li><li><a href="family.html">Family</a></li><li><a href="updates.html">Updates</a></li><li><a href="lab.html">Lab</a></li><li><a href="contact.html">Contact</a></li></ul></nav></div></header>
-    <main class="container page"><h1>About Me</h1><p class="lede">I’m a dad, husband, creative thinker, and builder with a soft spot for family stories and weirdly ambitious side projects.</p><div class="two-col"><p>I care a lot about the people I love and the things I build. Sometimes those overlap, usually around breakfast when I’m debugging a tiny app while looking for someone’s missing shoe.</p><p>I’m not trying to sound polished here. I’m trying to sound real. This site is honest life updates, meaningful moments, wins, misses, and the occasional joke that only parents will truly appreciate.</p></div><div class="callout"><h2>Who you’ll meet here</h2><ul><li>A family-centered human who cares deeply and laughs often.</li><li>A builder who turns messy ideas into working prototypes.</li><li>A storyteller who wants to remember what mattered.</li><li>A dad with enough self-awareness to know this whole site is absurd and still worth making.</li></ul></div></main>
-    <footer class="site-footer"><div class="container footer-wrap"><p>© <span data-year></span> thordad.com</p><p>No fake bio voice detected.</p></div></footer><script src="script.js"></script>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">thordad<span>.com</span></a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="about.html">About Me</a></li>
+            <li><a href="family.html">Family</a></li>
+            <li><a href="updates.html">Blog / Updates</a></li>
+            <li><a href="lab.html">Lab</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page">
+      <h1>About Me</h1>
+      <p class="lede">
+        I’m a dad first, builder second, and occasional overthinker of snack
+        logistics at soccer games.
+      </p>
+      <div class="two-col">
+        <p>
+          I love creating things that make people smile — whether that’s a tiny
+          app that solves a silly problem, a family trip plan that actually
+          survives contact with reality, or a story that makes everyone at the
+          dinner table laugh-snort.
+        </p>
+        <p>
+          Around here, I keep it honest: wins, fails, weird ideas, and little
+          lessons from parenting and building. No polished superhero routine,
+          just a real human trying to make cool stuff and raise kind kids.
+        </p>
+      </div>
+      <div class="callout">
+        <h2>What I’m into</h2>
+        <ul>
+          <li>Family adventures and memory-making missions</li>
+          <li>Designing web apps and creative prototypes</li>
+          <li>Humor, storytelling, and useful chaos</li>
+          <li>Turning “someday ideas” into “launched tonight”</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-wrap"><p>© <span id="year"></span> thordad.com</p><p>Built for real life.</p></div></footer>
+    <script src="script.js"></script>
   </body>
 </html>

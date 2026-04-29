@@ -6,19 +6,22 @@
     <title>thordad.com | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html">thordad<span>.com</span></a>
-        <nav aria-label="Primary">
+        <nav>
           <ul class="nav-links">
             <li><a class="active" href="index.html">Home</a></li>
             <li><a href="about.html">About Me</a></li>
             <li><a href="family.html">Family</a></li>
-            <li><a href="updates.html">Updates</a></li>
+            <li><a href="updates.html">Blog / Updates</a></li>
             <li><a href="lab.html">Lab</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -28,41 +31,70 @@
 
     <main>
       <section class="hero container">
-        <p class="eyebrow">Family first · Dry humor · Late night builds</p>
-        <h1>This is my digital home base: part family storybook, part creative workshop, all real life.</h1>
-        <p class="lede">
-          I’m a dad, a builder, and a person who keeps shipping ideas because apparently “just relaxing” never fully took.
-          This is where beach days, milestones, project logs, and sarcastic survival notes live together.
-        </p>
-        <div class="cta-row">
-          <a class="btn primary" href="family.html">See Family Life</a>
-          <a class="btn ghost" href="lab.html">Explore the Lab</a>
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Dad mode: always ON</p>
+            <h1>
+              Family stories, wild ideas,<br />
+              and a garage full of internet projects.
+            </h1>
+            <p class="lede">
+              Welcome to my corner of the web: part family scrapbook, part creative
+              workshop, part “did this really happen?” archive.
+            </p>
+            <div class="cta-row">
+              <a class="btn primary" href="family.html">See Family Life</a>
+              <a class="btn ghost" href="lab.html">Explore the Lab</a>
+            </div>
+          </div>
+          <aside class="hero-panel">
+            <p><strong>Current vibe:</strong> raising great humans + shipping weirdly useful things.</p>
+            <p><strong>Latest mission:</strong> build once, laugh often, document the chaos.</p>
+          </aside>
         </div>
       </section>
 
-      <section class="container preview-grid">
-        <article class="card">
+      <section class="preview-grid container">
+        <article class="card soft-glow">
           <h2>Family Highlights</h2>
-          <p>Photos, stories, vacations, milestones, and funny moments worth saving before the timeline eats them.</p>
-          <a href="family.html">Go to Family →</a>
+          <p>
+            Beach days, milestone moments, road trip legends, and the kind of
+            chaos you can only call “core memory material.”
+          </p>
+          <a href="family.html">Visit Family →</a>
         </article>
-        <article class="card">
+        <article class="card soft-glow">
           <h2>Latest Updates</h2>
-          <p>Personal posts, parenthood notes, reflections, and project updates written like a real person, not a press release.</p>
+          <p>
+            Notes from dad life, weirdly deep shower thoughts, and behind the
+            scenes updates from projects in progress.
+          </p>
           <a href="updates.html">Read Updates →</a>
         </article>
-        <article class="card">
-          <h2>Active Lab</h2>
-          <p>Apps, prototypes, and experiments built to solve real problems (or at least make chaos slightly more elegant).</p>
-          <a href="lab.html">Enter Lab →</a>
+        <article class="card soft-glow">
+          <h2>The Lab</h2>
+          <p>
+            Experimental tools, tiny web apps, prototypes, and playful digital
+            builds that started with “what if...”
+          </p>
+          <a href="lab.html">Enter the Lab →</a>
         </article>
+      </section>
+
+      <section class="quote-band">
+        <div class="container">
+          <p>
+            “Build things worth sharing. Live moments worth remembering. Laugh
+            loud enough that the neighbors hear it.”
+          </p>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>© <span data-year></span> thordad.com</p>
-        <p>Built with heart, bite, and too many browser tabs.</p>
+        <p>© <span id="year"></span> thordad.com</p>
+        <p>Made with heart, humor, and late-night code.</p>
       </div>
     </footer>
     <script src="script.js"></script>

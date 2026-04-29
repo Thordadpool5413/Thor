@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" /><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>thordad.com | Lab</title><link rel="stylesheet" href="styles.css" /></head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>thordad.com | Lab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
   <body>
-    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">thordad<span>.com</span></a><nav aria-label="Primary"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Me</a></li><li><a href="family.html">Family</a></li><li><a href="updates.html">Updates</a></li><li><a class="active" href="lab.html">Lab</a></li><li><a href="contact.html">Contact</a></li></ul></nav></div></header>
-    <main class="container page"><h1>The Lab</h1><p class="lede">This is not a side page. This is the workshop inside the house—where ideas get built, tested, and occasionally promoted to “actually useful.”</p><section class="preview-grid"><article class="card"><h2>Morning Launchpad</h2><p><strong>What it does:</strong> Combines weather, school schedule, reminders, and “don’t forget this” notes.</p><p><strong>Why it exists:</strong> We wanted less chaos before 8am and fewer missing-item scavenger hunts.</p><button class="btn ghost" data-demo="launchpad">Run Demo</button><p class="demo-output" id="launchpad">Demo idle.</p></article><article class="card"><h2>Dad Joke Defibrillator</h2><p><strong>What it does:</strong> Emergency joke injection for awkward silence events.</p><p><strong>Why it exists:</strong> Humor is cheaper than therapy and works faster at dinner.</p><button class="btn ghost" data-demo="joke">Run Demo</button><p class="demo-output" id="joke">Demo idle.</p></article><article class="card"><h2>Trip Brain Prototype</h2><p><strong>What it does:</strong> Plans routes, breaks, snack windows, and backup stops.</p><p><strong>Why it exists:</strong> Family trips should create stories, not traffic-induced diplomacy failures.</p><button class="btn ghost" data-demo="trip">Run Demo</button><p class="demo-output" id="trip">Demo idle.</p></article></section></main>
-    <footer class="site-footer"><div class="container footer-wrap"><p>© <span data-year></span> thordad.com</p><p>Build, test, laugh, repeat.</p></div></footer><script src="script.js"></script>
+    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">thordad<span>.com</span></a><nav><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Me</a></li><li><a href="family.html">Family</a></li><li><a href="updates.html">Blog / Updates</a></li><li><a class="active" href="lab.html">Lab</a></li><li><a href="contact.html">Contact</a></li></ul></nav></div></header>
+
+    <main class="container page">
+      <h1>The Lab</h1>
+      <p class="lede">A creative workshop for ideas that started small and refused to stay that way.</p>
+      <section class="preview-grid">
+        <article class="card">
+          <h2>Morning Launchpad</h2>
+          <p><strong>What it is:</strong> A family dashboard for schedules, weather, and reminders.</p>
+          <p><strong>Why it exists:</strong> Because mornings should feel like teamwork, not emergency mode.</p>
+        </article>
+        <article class="card">
+          <h2>Dad Joke Generator Pro</h2>
+          <p><strong>What it is:</strong> A tiny web app that serves painfully excellent jokes on demand.</p>
+          <p><strong>Why it exists:</strong> To keep groans at healthy household levels.</p>
+        </article>
+        <article class="card">
+          <h2>Trip Brain</h2>
+          <p><strong>What it is:</strong> A prototype planner that maps stops, snacks, and timing.</p>
+          <p><strong>Why it exists:</strong> Family adventures deserve less friction and more fun.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-wrap"><p>© <span id="year"></span> thordad.com</p><p>Build. Test. Laugh. Repeat.</p></div></footer>
+    <script src="script.js"></script>
   </body>
 </html>
