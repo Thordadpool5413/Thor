@@ -1,29 +1,36 @@
-# Thor — BloomBuddy App
+# ThorDad static website (Hostinger-ready)
 
-BloomBuddy is a kid-friendly starter period app that helps young users:
+This project is a plain static site (HTML/CSS/JavaScript) and can be deployed directly to Hostinger without a Node/Python runtime.
 
-- Track period dates
-- Check in on mood and feelings
-- Write journal entries
-- Learn basic period education in age-appropriate language
+## Files to upload
+Upload everything in this folder to your Hostinger `public_html` directory:
 
-## Run locally
+- `index.html`
+- `about.html`
+- `family.html`
+- `updates.html`
+- `lab.html`
+- `archive.html`
+- `private-lab.html`
+- `contact.html`
+- `styles.css`
+- `script.js`
+- `.htaccess`
 
-This is a static web app (no build step required).
+## Hostinger deployment steps
+1. Open Hostinger hPanel.
+2. Go to **Websites** → **Manage** → **File Manager**.
+3. Open `public_html`.
+4. Delete old site files (or back them up first).
+5. Upload this repo's files directly into `public_html`.
+6. Ensure `index.html` is present in `public_html`.
+7. Clear Hostinger cache/CDN if enabled.
+8. Hard refresh your browser (`Ctrl+F5` / `Cmd+Shift+R`).
 
-```bash
-python3 -m http.server 8000
-```
+## Runtime stack
+- Static HTML/CSS/JavaScript
+- No framework required
+- No build command required
 
-Then open: <http://localhost:8000>
-
-## Files
-
-- `index.html` — app layout and educational content
-- `styles.css` — visual design and responsive card layout
-- `app.js` — tracking, journaling, and local storage logic
-# Thor
-## Mermaid flowchart URL
-
-Run `python mermaid_flowchart_url.py` to regenerate the Mermaid Ink URL from the embedded flowchart definition.
-The latest generated URL is stored in `mermaid_flowchart_url.txt`.
+## Notes
+- `.htaccess` enables extensionless routes (e.g., `/about` → `about.html`) and caching rules optimized for Hostinger/Apache.
