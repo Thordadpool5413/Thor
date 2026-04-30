@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+  command = "echo 'Static ThorDad site'"
+
+[build.processing]
+  skip_processing = true
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/script.js"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
