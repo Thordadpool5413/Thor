@@ -32,100 +32,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>thordad.com | Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>BloomBuddy | First Period Helper</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand" href="index.html">thordad<span>.com</span></a>
-        <nav>
-          <ul class="nav-links">
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="family.html">Family</a></li>
-            <li><a href="updates.html">Blog / Updates</a></li>
-            <li><a href="lab.html">Lab</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
+    <header class="hero">
+      <h1>🌸 BloomBuddy</h1>
+      <p>
+        A gentle space for kids starting their first period — track your cycle,
+        log your mood, journal your day, and learn in words made for you.
+      </p>
     </header>
 
-    <main>
-      <section class="hero container">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow">Dad mode: always ON</p>
-            <h1>
-              Family stories, wild ideas,<br />
-              and a garage full of internet projects.
-            </h1>
-            <p class="lede">
-              Welcome to my corner of the web: part family scrapbook, part creative
-              workshop, part “did this really happen?” archive.
+    <main class="app-grid">
+      <section class="card" aria-labelledby="cycle-title">
+        <h2 id="cycle-title">🩸 Period Tracker</h2>
+        <form id="period-form" class="stack">
+          <label>
+            Start date
+            <input type="date" id="period-start" required />
+          </label>
+          <label>
+            End date
+            <input type="date" id="period-end" required />
+          </label>
+          <button type="submit">Save period</button>
+        </form>
+        <p id="next-period" class="highlight"></p>
+        <ul id="period-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="mood-title">
+        <h2 id="mood-title">😊 Mood Check-In</h2>
+        <form id="mood-form" class="stack">
+          <label>
+            How are you feeling today?
+            <select id="mood-select" required>
+              <option value="">Pick one...</option>
+              <option>Happy</option>
+              <option>Tired</option>
+              <option>Crampy</option>
+              <option>Calm</option>
+              <option>Worried</option>
+              <option>Excited</option>
+            </select>
+          </label>
+          <label>
+            What helped today?
+            <input id="mood-note" maxlength="120" placeholder="Example: warm tea + nap" />
+          </label>
+          <button type="submit">Save mood</button>
+        </form>
+        <ul id="mood-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="journal-title">
+        <h2 id="journal-title">📔 Journal</h2>
+        <form id="journal-form" class="stack">
+          <label>
+            Write your thoughts
+            <textarea id="journal-entry" rows="4" maxlength="400" required placeholder="Today I felt..."></textarea>
+          </label>
+          <button type="submit">Save entry</button>
+        </form>
+        <ul id="journal-list" class="list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="learn-title">
+        <h2 id="learn-title">🎓 Learn Zone</h2>
+        <div class="learn-stack">
+          <article>
+            <h3>What is a period?</h3>
+            <p>
+              A period is when blood leaves your body from your vagina. It means
+              your body is growing, and that's normal.
             </p>
-            <div class="cta-row">
-              <a class="btn primary" href="family.html">See Family Life</a>
-              <a class="btn ghost" href="lab.html">Explore the Lab</a>
-            </div>
-          </div>
-          <aside class="hero-panel">
-            <p><strong>Current vibe:</strong> raising great humans + shipping weirdly useful things.</p>
-            <p><strong>Latest mission:</strong> build once, laugh often, document the chaos.</p>
-          </aside>
-        </div>
-      </section>
-
-      <section class="preview-grid container">
-        <article class="card soft-glow">
-          <h2>Family Highlights</h2>
-          <p>
-            Beach days, milestone moments, road trip legends, and the kind of
-            chaos you can only call “core memory material.”
-          </p>
-          <a href="family.html">Visit Family →</a>
-        </article>
-        <article class="card soft-glow">
-          <h2>Latest Updates</h2>
-          <p>
-            Notes from dad life, weirdly deep shower thoughts, and behind the
-            scenes updates from projects in progress.
-          </p>
-          <a href="updates.html">Read Updates →</a>
-        </article>
-        <article class="card soft-glow">
-          <h2>The Lab</h2>
-          <p>
-            Experimental tools, tiny web apps, prototypes, and playful digital
-            builds that started with “what if...”
-          </p>
-          <a href="lab.html">Enter the Lab →</a>
-        </article>
-      </section>
-
-      <section class="quote-band">
-        <div class="container">
-          <p>
-            “Build things worth sharing. Live moments worth remembering. Laugh
-            loud enough that the neighbors hear it.”
-          </p>
+          </article>
+          <article>
+            <h3>How long does it last?</h3>
+            <p>
+              Many periods last about 3 to 7 days. It can be different for each
+              person, and that's okay.
+            </p>
+          </article>
+          <article>
+            <h3>What can help with cramps?</h3>
+            <p>
+              Try a warm pad, water, rest, or gentle stretching. Ask a trusted
+              adult if pain feels strong.
+            </p>
+          </article>
+          <article>
+            <h3>When should I ask for help?</h3>
+            <p>
+              If you feel very scared, very sad, dizzy, or have very heavy
+              bleeding, talk to a parent, guardian, school nurse, or doctor.
+            </p>
+          </article>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <p>© <span id="year"></span> thordad.com</p>
-        <p>Made with heart, humor, and late-night code.</p>
-      </div>
+    <footer>
+      <p>
+        💖 Reminder: You are not alone. Your feelings matter.
+      </p>
     </footer>
-    <script src="script.js"></script>
+
+    <script src="app.js"></script>
   </body>
 </html>
