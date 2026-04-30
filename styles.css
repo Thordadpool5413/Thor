@@ -12,6 +12,7 @@
   --panel: #121f33;
 }
 *{box-sizing:border-box}
+html,body{margin:0;background:#070d17 !important;color:var(--ink)}
 html,body{margin:0}
 body{
   font-family:"Outfit",system-ui,sans-serif;
