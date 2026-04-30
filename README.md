@@ -22,3 +22,8 @@ Then open: <http://localhost:8000>
 - `index.html` — app layout and educational content
 - `styles.css` — visual design and responsive card layout
 - `app.js` — tracking, journaling, and local storage logic
+# Thor
+## Mermaid flowchart URL
+
+Run `python mermaid_flowchart_url.py` to regenerate the Mermaid Ink URL from the embedded flowchart definition.
+The latest generated URL is stored in `mermaid_flowchart_url.txt`.
