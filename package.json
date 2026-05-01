@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Static ThorDad multipage website for Hostinger Git deployments.",
-  "engines": {
-    "node": "24.x"
-  },
   "scripts": {
-    "build": "echo 'Static site build complete'",
-    "start": "node server.js"
+    "build": "echo 'Static site - no build required'"
   }
 }
