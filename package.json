@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "echo 'Static site build complete'",
-    "start": "node server.js"
     "start": "echo 'Static site: no runtime server required on Hostinger shared hosting'"
   }
 }
