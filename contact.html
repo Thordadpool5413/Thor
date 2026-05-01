@@ -3,19 +3,44 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="ThorDad personal HQ: family stories, updates, and TD Lab projects." />
-  <meta name="theme-color" content="#070d16" />
+  <meta name="description" content="Contact ThorDad / TD with ideas, notes, feedback, or a message that can survive daylight." />
+  <meta name="theme-color" content="#08101b" />
   <title>ThorDad | Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">ThorDad <span>TD</span></a><nav aria-label="Primary"><ul class="nav-links"><li><a href="index.html">Welcome to the Problem</a></li><li><a href="about.html">The Man Behind the Bad Decisions</a></li><li><a href="family.html">The Reason I’m Like This</a></li><li><a href="updates.html">Running Commentary</a></li><li><a href="lab.html">TD Lab and Other Questionable Choices</a></li><li><a class="active" href="contact.html">Contact</a></li></ul></nav></div></header>
-<main class="container page"><p class="eyebrow">TRANSMISSION</p><h1>Contact</h1><p class="lede">Send ideas, feedback, or terrible jokes.</p><form class='card'><label>Name<input type='text'/></label><label>Email<input type='email'/></label><label>Message<textarea rows='6'></textarea></label><button class='btn primary' type='submit'>Send Message</button></form></main>
-<footer class="site-footer"><div class="container foot"><div><strong>ThorDad / TD</strong><p>One world: family, humor, stories, projects.</p></div><div><strong>Explore</strong><p><a href="index.html">Home</a> · <a href="updates.html">Blog</a> · <a href="lab.html">Lab</a></p></div><div><strong>Private</strong><p><a href="archive.html">Classified Family Business</a><br/><a href="private-lab.html">Do Not Push Buttons</a></p></div></div><div class="container note">Powered by family, coffee, questionable sleep, and mild lightning damage. · © <span data-year></span> · <span data-build></span></div></footer>
-<script src="script.js"></script>
+  <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="ThorDad home"><span class="brand-mark">TD</span><span class="brand-text">ThorDad <span>TD Home Base</span></span></a><button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav aria-label="Primary"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="family.html">Family</a></li><li><a href="updates.html">Updates</a></li><li><a href="lab.html">Lab</a></li><li><a href="contact.html">Contact</a></li></ul></nav></div></header>
+
+  <main class="container page">
+    <p class="eyebrow">Transmission Window</p>
+    <h1>Contact</h1>
+    <p class="lede">Send a note, an idea, a project thought, or a joke with enough structural integrity to survive being read before coffee.</p>
+
+    <section class="section intro">
+      <form class="contact-form" name="thordad-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-contact-form>
+        <input type="hidden" name="form-name" value="thordad-contact" />
+        <p class="hidden-field"><label>Do not fill this out: <input name="bot-field" /></label></p>
+        <div class="form-grid">
+          <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        </div>
+        <label style="margin-top:1rem">Topic<select name="topic" required><option value="">Pick a lane</option><option>Family note</option><option>Project idea</option><option>TD Lab feedback</option><option>Movie or gaming thought</option><option>General transmission</option></select></label>
+        <label style="margin-top:1rem">Message<textarea name="message" rows="7" required placeholder="Keep it human. The robots already have enough meetings."></textarea></label>
+        <div class="cta"><button class="btn primary" type="submit">Send Message</button><span class="pill gold" data-form-status>Netlify will handle the delivery.</span></div>
+      </form>
+      <aside class="panel">
+        <p class="kicker">Contact Policy</p>
+        <h2>Friendly, direct, lightly weatherproof.</h2>
+        <p>Good topics: family updates, creative projects, prototype feedback, movie takes, gaming notes, beach-life observations, and ideas that might become useful after a suspicious amount of tinkering.</p>
+        <p style="margin-top:1rem">Bad topics: spam, private family details in public channels, and anything that starts with “quick opportunity” but somehow has twelve follow-up emails.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container foot"><div><strong>ThorDad / TD</strong><p>A cinematic personal home base for family, stories, updates, beach life, movies, gaming, and experiments.</p></div><div><strong>Public</strong><p><a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="family.html">Family</a> · <a href="updates.html">Updates</a> · <a href="lab.html">Lab</a> · <a href="contact.html">Contact</a></p></div><div><strong>Private</strong><p><a href="archive.html">Classified Family Business</a><br /><a href="private-lab.html">Do Not Push Buttons</a></p></div></div><div class="container note">Powered by family, coffee, questionable sleep, and mild lightning damage.</div></footer>
+  <script src="script.js"></script>
 </body>
-</html>
 </html>
