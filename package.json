@@ -4,6 +4,7 @@
   "private": true,
   "description": "Static ThorDad multipage website for Hostinger Git deployments.",
   "scripts": {
+    "start": "node app.js",
     "build": "echo 'Static site - no build required'"
   }
 }
