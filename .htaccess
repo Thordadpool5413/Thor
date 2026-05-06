@@ -3,9 +3,13 @@
 # Security + MIME defaults
 Options -Indexes
 AddDefaultCharset UTF-8
+DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Route the Hospice Roadmap lab folder directly to its landing page.
+  RewriteRule ^labs/hospice-roadmap/?$ /labs/hospice-roadmap/index.html [L]
 
   # Route extensionless URLs to HTML pages if they exist.
   RewriteCond %{REQUEST_FILENAME} !-f
