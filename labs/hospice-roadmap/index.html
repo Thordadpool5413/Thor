@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Hospice Roadmap live app demo in TD Lab." />
+  <meta name="theme-color" content="#08101b" />
+  <title>Hospice Roadmap | TD Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/png" href="../../assets/thordad-logo.png" />
+  <link rel="apple-touch-icon" href="../../assets/thordad-logo.png" />
+  <style>
+    .lab-app-page {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(61, 103, 255, 0.16), transparent 24%), #08101b;
+    }
+    .lab-app-shell {
+      margin-top: 32px;
+      margin-bottom: 48px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(151, 175, 255, 0.18);
+      background: rgba(9, 16, 31, 0.92);
+      box-shadow: 0 30px 90px rgba(3, 9, 22, 0.35);
+    }
+    .lab-app-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(151, 175, 255, 0.14);
+      background: linear-gradient(180deg, rgba(17, 28, 54, 0.96), rgba(11, 19, 38, 0.96));
+    }
+    .lab-app-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .lab-app-title strong {
+      font-size: 1.1rem;
+      color: #f4f7ff;
+    }
+    .lab-app-title span {
+      color: rgba(226, 233, 255, 0.76);
+      font-size: 0.95rem;
+    }
+    .lab-app-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .lab-app-frame {
+      width: 100%;
+      height: calc(100vh - 250px);
+      min-height: 980px;
+      border: 0;
+      background: #08101b;
+      display: block;
+    }
+    .lab-app-note {
+      margin-top: 16px;
+      color: rgba(226, 233, 255, 0.8);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 900px) {
+      .lab-app-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .lab-app-frame {
+        height: 100vh;
+        min-height: 860px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lab-app-page">
+    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="../../index.html" aria-label="ThorDad home"><img class="brand-mark" src="../../assets/thordad-logo.png" alt="ThorDad medallion logo" /><span class="brand-text">ThorDad <span>TD Home Base</span></span></a><button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav aria-label="Primary"><ul class="nav-links"><li><a href="../../index.html">Home</a></li><li><a href="../../about.html">About</a></li><li><a href="../../family.html">Family</a></li><li><a href="../../updates.html">Updates</a></li><li><a href="../../lab.html">Lab</a></li><li><a href="../../contact.html">Contact</a></li></ul></nav></div></header>
+
+    <main class="container page">
+      <p class="eyebrow">Live Care Demo</p>
+      <h1>Hospice Roadmap</h1>
+      <p class="lede">A live, working app demo with AI guidance, voice playback, provider tools, and caregiver support flows available for end-user testing.</p>
+
+      <section class="lab-app-shell" aria-label="Hospice Roadmap live app frame">
+        <div class="lab-app-topbar">
+          <div class="lab-app-title">
+            <strong>Hospice Roadmap</strong>
+            <span>Live app with Ragna AI, provider search, and guided caregiver support</span>
+          </div>
+          <div class="lab-app-actions">
+            <a class="btn primary" href="https://papayawhip-quetzal-198227.hostingersite.com" target="_blank" rel="noopener noreferrer">Open Full Demo</a>
+            <a class="btn secondary" href="../../lab.html">Back to TD Lab</a>
+          </div>
+        </div>
+        <iframe
+          class="lab-app-frame"
+          title="Hospice Roadmap live app demo"
+          src="https://papayawhip-quetzal-198227.hostingersite.com"
+          loading="eager"
+          allow="autoplay; clipboard-write; microphone"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </section>
+
+      <p class="lab-app-note">If your browser blocks embedded audio or mic permissions, use <a href="https://papayawhip-quetzal-198227.hostingersite.com" target="_blank" rel="noopener noreferrer">Open Full Demo</a> for the full-screen version.</p>
+    </main>
+
+    <footer class="site-footer"><div class="container foot"><div><strong>ThorDad / TD</strong><p>A cinematic personal home base for family, stories, updates, beach life, movies, gaming, and experiments.</p></div><div><strong>Public</strong><p><a href="../../index.html">Home</a> · <a href="../../about.html">About</a> · <a href="../../family.html">Family</a> · <a href="../../updates.html">Updates</a> · <a href="../../lab.html">Lab</a> · <a href="../../contact.html">Contact</a></p></div><div><strong>Private</strong><p><a href="../../archive.html">Classified Family Business</a><br /><a href="../../private-lab.html">Do Not Push Buttons</a></p></div></div><div class="container note">Powered by family, coffee, questionable sleep, and mild lightning damage.</div></footer>
+  </div>
+  <script src="../../script.js"></script>
+</body>
+</html>
