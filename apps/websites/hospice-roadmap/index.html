@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Hospice Roadmap</title>
+  <style>
+    :root {
+      --shell-width: 484px;
+      --shell-height: 1008px;
+      --screen-width: 448px;
+      --screen-height: 972px;
+      --shell-scale: 1;
+      --shell-padding: 18px;
+      --screen-radius: 56px;
+      --body-radius: 72px;
+      --footer-overlay: 30px;
+      --viewport-bottom-inset: 18px;
+      --chrome-color-top: #b8c2d9;
+      --chrome-color-mid: #8d98b4;
+      --chrome-color-bottom: #677289;
+      --chrome-shadow: rgba(3, 9, 23, 0.58);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #09142c;
+      font-family: Inter, Arial, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 50% 10%, rgba(118, 149, 245, 0.26), transparent 18%),
+        radial-gradient(circle at 50% 58%, rgba(53, 92, 194, 0.22), transparent 26%),
+        radial-gradient(circle at 88% 92%, rgba(255, 206, 153, 0.12), transparent 20%),
+        linear-gradient(180deg, #07101f 0%, #0b1732 48%, #101b38 100%);
+    }
+    .stage {
+      width: min(100%, 1320px);
+      min-height: calc(100vh - 56px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .stage::before {
+      content: "";
+      position: absolute;
+      width: 720px;
+      height: 720px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110, 136, 222, 0.18) 0%, rgba(110, 136, 222, 0.06) 38%, transparent 68%);
+      filter: blur(10px);
+      opacity: 0.95;
+      pointer-events: none;
+    }
+    .stage::after {
+      content: "";
+      position: absolute;
+      bottom: 40px;
+      width: 540px;
+      height: 78px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(4, 8, 18, 0.44) 0%, rgba(4, 8, 18, 0.2) 46%, transparent 76%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .device-wrap {
+      width: var(--shell-width);
+      height: var(--shell-height);
+      transform: scale(var(--shell-scale));
+      transform-origin: center center;
+    }
+    .device-shell {
+      position: relative;
+      width: var(--shell-width);
+      height: var(--shell-height);
+      padding: var(--shell-padding);
+      border-radius: var(--body-radius);
+      border: 1px solid rgba(235, 241, 255, 0.46);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 22%),
+        linear-gradient(180deg, var(--chrome-color-top) 0%, var(--chrome-color-mid) 46%, var(--chrome-color-bottom) 100%);
+      box-shadow:
+        0 56px 148px var(--chrome-shadow),
+        0 20px 42px rgba(8, 18, 38, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.34),
+        inset 0 -1px 0 rgba(20, 30, 49, 0.42);
+      overflow: visible;
+    }
+    .device-shell::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: calc(var(--body-radius) - 8px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    .device-shell::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: calc(var(--body-radius) - 3px);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 12%, transparent 88%, rgba(255,255,255,0.04));
+      pointer-events: none;
+    }
+    .buttons-left,
+    .buttons-right {
+      position: absolute;
+      pointer-events: none;
+    }
+    .buttons-left { left: -3px; top: 176px; }
+    .buttons-right { right: -3px; top: 246px; }
+    .button {
+      display: block;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(63, 72, 98, 0.98), rgba(43, 51, 72, 1));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 1px 3px rgba(0, 0, 0, 0.34);
+    }
+    .button + .button { margin-top: 18px; }
+    .button.volume { width: 5px; height: 76px; }
+    .button.action { width: 5px; height: 56px; }
+    .topbar {
+      position: absolute;
+      left: 50%;
+      top: 11px;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      pointer-events: none;
+    }
+    .island {
+      width: 152px;
+      height: 33px;
+      border-radius: 999px;
+      background: rgba(5, 8, 16, 0.96);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 14px rgba(4, 8, 16, 0.22);
+    }
+    .frame {
+      width: var(--screen-width);
+      height: var(--screen-height);
+      border-radius: var(--screen-radius);
+      overflow: hidden;
+      background: #07101f;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 16px 30px rgba(255, 255, 255, 0.02), 0 0 0 1px rgba(5, 10, 22, 0.36);
+      position: relative;
+      margin-top: 0;
+    }
+    .screen-viewport {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: var(--viewport-bottom-inset);
+      overflow: hidden;
+      border-radius: inherit;
+      background: #081121;
+    }
+    .screen {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #081121;
+      display: block;
+    }
+    .screen-gloss {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 14%),
+        radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.08), transparent 30%);
+      z-index: 2;
+    }
+    .screen-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--footer-overlay);
+      background: linear-gradient(180deg, rgba(8, 17, 33, 0.08), rgba(8, 17, 33, 0.42) 54%, rgba(8, 17, 33, 0.9) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .home-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      width: 142px;
+      height: 5.5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0.92;
+    }
+    .fallback-link {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 10;
+      color: rgba(236, 242, 255, 0.9);
+      background: rgba(8, 17, 33, 0.86);
+      border: 1px solid rgba(154, 176, 255, 0.22);
+      border-radius: 999px;
+      padding: 10px 16px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 32px rgba(3, 9, 23, 0.26);
+    }
+    @media (max-width: 720px) {
+      body { padding: 0; background: #081121; }
+      .stage, .device-wrap, .device-shell, .frame { width: 100%; height: 100dvh; min-height: 100dvh; }
+      .device-wrap { transform: none; }
+      .device-shell { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+      .buttons-left, .buttons-right, .topbar, .home-indicator { display: none; }
+      .frame { border: 0; border-radius: 0; box-shadow: none; }
+      .screen-viewport { bottom: 0; border-radius: 0; }
+      .screen-footer { display: none; }
+      .fallback-link { right: 12px; left: 12px; bottom: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="device-wrap">
+      <section class="device-shell" aria-label="Hospice Roadmap iPhone demo">
+        <div class="buttons-left" aria-hidden="true"><span class="button volume"></span><span class="button volume"></span></div>
+        <div class="buttons-right" aria-hidden="true"><span class="button action"></span></div>
+        <div class="topbar" aria-hidden="true"><div class="island"></div></div>
+        <section class="frame">
+          <div class="screen-viewport">
+            <iframe class="screen" title="Hospice Roadmap app" allow="microphone; autoplay; clipboard-read; clipboard-write"></iframe>
+            <div class="screen-gloss" aria-hidden="true"></div>
+          </div>
+          <div class="screen-footer" aria-hidden="true"></div>
+          <div class="home-indicator" aria-hidden="true"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+  <a class="fallback-link" href="https://papayawhip-quetzal-198227.hostingersite.com/" target="_blank" rel="noopener noreferrer">Open full demo in a new tab</a>
+  <script>
+    (function () {
+      const shellWidth = 484;
+      const shellHeight = 1008;
+      const mobileBreakpoint = 760;
+      const appPath = "/apps/websites/hospice-roadmap/app/";
+      const fallbackAppPath = "https://papayawhip-quetzal-198227.hostingersite.com/";
+      const showcaseVersion = "2026-05-08c";
+      const showcaseVersionKey = "@hospice_roadmap_showcase_version";
+      const iframe = document.querySelector(".screen");
+      let recoveredBlankState = false;
+      let hasLoaded = false;
+
+      function buildVersionedAppSrc(basePath, suffix) {
+        const joiner = basePath.includes("?") ? "&" : "?";
+        return basePath + joiner + "shellVersion=" + encodeURIComponent(showcaseVersion + (suffix || ""));
+      }
+
+      function resetDemoStorageIfNeeded() {
+        try {
+          const currentVersion = window.localStorage.getItem(showcaseVersionKey);
+          if (currentVersion === showcaseVersion) return;
+          Object.keys(window.localStorage).forEach((key) => {
+            if (key.startsWith("@hospice_roadmap_")) {
+              window.localStorage.removeItem(key);
+            }
+          });
+          window.localStorage.setItem(showcaseVersionKey, showcaseVersion);
+        } catch (error) {
+          console.warn("Unable to reset showcase storage", error);
+        }
+      }
+
+      function patchIframe() {
+        if (!iframe) return;
+        try {
+          const doc = iframe.contentDocument;
+          if (!doc || !doc.documentElement) return;
+          const existing = doc.getElementById("thor-showcase-fixes");
+          if (!existing) {
+            const style = doc.createElement("style");
+            style.id = "thor-showcase-fixes";
+            style.textContent = [
+              "html, body { min-height: 100%; height: 100%; overscroll-behavior: none; background: #081121 !important; }",
+              "body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }",
+              "* { scrollbar-width: none; }",
+              "*::-webkit-scrollbar { width: 0; height: 0; }",
+              "body { zoom: 0.965; transform-origin: top center; }"
+            ].join("\n");
+            doc.head.appendChild(style);
+          }
+          window.setTimeout(() => {
+            try {
+              const text = (doc.body && doc.body.innerText || "").replace(/\s+/g, " ").trim();
+              const root = doc.getElementById("root");
+              const rootText = (root && root.textContent || "").replace(/\s+/g, " ").trim();
+              const looksBlank = text.length < 8 || (root && rootText.length < 8);
+              if (looksBlank && !recoveredBlankState) {
+                recoveredBlankState = true;
+                Object.keys(doc.defaultView.localStorage).forEach((key) => {
+                  if (key.startsWith("@hospice_roadmap_")) {
+                    doc.defaultView.localStorage.removeItem(key);
+                  }
+                });
+                iframe.src = buildVersionedAppSrc(appPath, "-recover");
+              }
+            } catch (error) {
+              console.warn("Unable to run blank-state recovery", error);
+            }
+          }, 3500);
+        } catch (error) {
+          console.warn("Unable to patch iframe viewport", error);
+        }
+      }
+
+      function updateScale() {
+        if (window.innerWidth <= mobileBreakpoint) {
+          document.documentElement.style.setProperty("--shell-scale", "1");
+          return;
+        }
+        const availableWidth = Math.max(window.innerWidth - 120, 320);
+        const availableHeight = Math.max(window.innerHeight - 84, 540);
+        const scale = Math.min(availableWidth / shellWidth, availableHeight / shellHeight, 1.04);
+        document.documentElement.style.setProperty("--shell-scale", String(scale));
+      }
+
+      if (iframe) {
+        resetDemoStorageIfNeeded();
+        iframe.src = buildVersionedAppSrc(appPath);
+        iframe.addEventListener("load", function () {
+          hasLoaded = true;
+          patchIframe();
+        });
+        iframe.addEventListener("error", function () {
+          iframe.src = buildVersionedAppSrc(fallbackAppPath, "-fallback");
+        });
+        window.setTimeout(function () {
+          if (!hasLoaded) {
+            iframe.src = buildVersionedAppSrc(fallbackAppPath, "-fallback");
+          }
+        }, 6000);
+      }
+
+      window.addEventListener("resize", updateScale);
+      window.addEventListener("orientationchange", updateScale);
+      updateScale();
+      patchIframe();
+    })();
+  </script>
+</body>
+</html>
