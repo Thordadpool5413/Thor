@@ -18,12 +18,41 @@ const MIME = {
   '.webp': 'image/webp'
 };
 
-function resolveFile(urlPath) {
-  const clean = decodeURIComponent(urlPath.split('?')[0]);
-  let target = clean === '/' ? '/index.html' : clean;
+const ROUTES = new Map([
+  ['/', '/index.html'],
+  ['/home', '/index.html'],
+  ['/home/', '/index.html'],
+  ['/apps-websites', '/lab.html'],
+  ['/apps-websites/', '/lab.html'],
+  ['/apps/websites', '/lab.html'],
+  ['/apps/websites/', '/lab.html'],
+  ['/apps/websites/hospice-roadmap', '/labs/hospice-roadmap/index.html'],
+  ['/apps/websites/hospice-roadmap/', '/labs/hospice-roadmap/index.html'],
+  ['/labs/hospice-roadmap', '/labs/hospice-roadmap/index.html'],
+  ['/labs/hospice-roadmap/', '/labs/hospice-roadmap/index.html'],
+  ['/apps/websites/hospice-rep-cost-calculator', '/labs/hospice-rep-cost-calculator/index.html'],
+  ['/apps/websites/hospice-rep-cost-calculator/', '/labs/hospice-rep-cost-calculator/index.html'],
+  ['/labs/hospice-rep-cost-calculator', '/labs/hospice-rep-cost-calculator/index.html'],
+  ['/labs/hospice-rep-cost-calculator/', '/labs/hospice-rep-cost-calculator/index.html']
+]);
 
-  if (!path.extname(target)) {
-    target = `${target}.html`;
+function resolveFile(urlPath) {
+  let clean;
+  try {
+    clean = decodeURIComponent((urlPath || '/').split('?')[0]);
+  } catch (_) {
+    return null;
+  }
+
+  let target = ROUTES.get(clean);
+
+  if (!target) {
+    target = clean;
+    if (target.endsWith('/')) {
+      target = `${target}index.html`;
+    } else if (!path.extname(target)) {
+      target = `${target}.html`;
+    }
   }
 
   const full = path.normalize(path.join(ROOT, target));
@@ -47,7 +76,10 @@ const server = http.createServer((req, res) => {
     }
 
     const ext = path.extname(full).toLowerCase();
-    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+    res.writeHead(200, {
+      'Content-Type': MIME[ext] || 'application/octet-stream',
+      'Cache-Control': 'no-cache, no-store, must-revalidate'
+    });
     res.end(data);
   });
 });
