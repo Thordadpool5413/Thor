@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Hospice Provider Sales Intelligence Rep Cost Calculator for sales call, referral, admission, commission, and conversion-loss economics." />
+  <meta name="theme-color" content="#101827" />
+  <title>Hospice Provider Sales Intelligence | Rep Cost Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;650;750&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #101827;
+      --panel: #152238;
+      --panel-2: #1b2942;
+      --ink: #f8fafc;
+      --muted: #b7c3d6;
+      --quiet: #7f8da3;
+      --line: rgba(185, 199, 224, 0.18);
+      --red: #ff3b45;
+      --red-dark: #c92c38;
+      --green: #2abf7a;
+      --yellow: #f2c94c;
+      --shadow: 0 26px 70px rgba(0,0,0,.28);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); font-family: Geist, system-ui, sans-serif; background: var(--bg); }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; opacity: .5; background: radial-gradient(circle at 80% 8%, rgba(255,59,69,.16), transparent 20rem), radial-gradient(circle at 20% 92%, rgba(42,191,122,.08), transparent 20rem), repeating-linear-gradient(96deg, rgba(255,255,255,.035) 0 1px, transparent 1px 18px); }
+    h1, h2, h3 { margin: 0; font-family: Fraunces, Georgia, serif; line-height: 1.05; letter-spacing: 0; }
+    button, input { font: inherit; }
+    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(16,24,39,.94); backdrop-filter: blur(18px); }
+    .stripe { height: 5px; background: var(--red); }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: min(1440px, calc(100% - 32px)); margin: 0 auto; padding: 1rem 0; }
+    .brand p { margin: 0 0 .15rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .brand h1 { font-size: clamp(1.8rem, 3vw, 3rem); }
+    .brand h1 span { color: var(--red); }
+    .top-metrics { display: flex; gap: 1rem; align-items: center; }
+    .top-metrics div { text-align: right; min-width: 92px; }
+    .top-metrics span { display: block; color: var(--muted); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .top-metrics strong { display: block; margin-top: .12rem; font-size: 1.12rem; font-variant-numeric: tabular-nums; }
+    .print-btn { min-height: 42px; padding: .65rem .9rem; border: 1px solid rgba(255,59,69,.34); border-radius: var(--radius); color: var(--ink); background: rgba(255,59,69,.13); font-weight: 800; }
+    .shell { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 1.2rem; width: min(1440px, calc(100% - 32px)); margin: 1.2rem auto 3rem; }
+    .sidebar { position: sticky; top: 96px; align-self: start; max-height: calc(100vh - 112px); overflow: auto; padding: 1.2rem; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(21,34,56,.86); box-shadow: var(--shadow); }
+    .section-title { display: flex; align-items: center; gap: .75rem; margin: 0 0 1rem; font-size: 1.2rem; }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .field { margin-bottom: 1.15rem; }
+    .field label { display: flex; justify-content: space-between; gap: .8rem; margin-bottom: .45rem; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .field output { color: var(--ink); font-weight: 900; letter-spacing: 0; text-transform: none; }
+    input[type="range"] { width: 100%; accent-color: #b964d8; }
+    .tier { margin-bottom: .7rem; padding: .75rem; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(10,17,29,.44); }
+    .tier.active { border-color: var(--red); background: rgba(255,59,69,.08); }
+    .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
+    .tier input { width: 100%; padding: .55rem .6rem; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); background: #101827; }
+    .tier small { display: block; margin-bottom: .4rem; color: var(--red); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .main { display: grid; gap: 1rem; }
+    .panel, .card { border: 1px solid var(--line); border-radius: var(--radius); background: rgba(21,34,56,.9); box-shadow: var(--shadow); overflow: hidden; }
+    .scout-head { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1.2rem; border-bottom: 1px solid rgba(255,59,69,.24); background: rgba(255,59,69,.09); }
+    .grade-lockup { display: flex; align-items: center; gap: .9rem; }
+    .grade-badge { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--red); color: #fff; font-family: Fraunces, Georgia, serif; font-size: 1.9rem; box-shadow: 0 0 28px rgba(255,59,69,.35); }
+    .scout-body { display: grid; grid-template-columns: 210px minmax(0, 1fr); }
+    .grade-panel { display: grid; place-items: center; padding: 1.5rem; border-right: 1px solid var(--line); background: rgba(10,17,29,.38); text-align: center; }
+    .grade-panel strong { display: block; color: var(--red); font-family: Fraunces, Georgia, serif; font-size: clamp(5rem, 11vw, 8rem); line-height: .85; }
+    .grade-panel span { color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat-col { padding: 1.3rem; border-right: 1px solid var(--line); }
+    .stat-col:last-child { border-right: 0; }
+    .label { color: var(--muted); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .money { margin-top: .45rem; font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 850; line-height: 1; font-variant-numeric: tabular-nums; }
+    .sub { margin-top: .35rem; color: var(--muted); font-size: .9rem; }
+    .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .kpi { position: relative; padding: 1.35rem; border-top: 4px solid rgba(255,255,255,.28); }
+    .kpi.hot { border-top-color: var(--red); background: rgba(255,59,69,.08); }
+    .kpi .formula { display: inline-block; margin-top: 1rem; padding: .42rem .5rem; border-radius: var(--radius); color: var(--muted); background: rgba(255,255,255,.06); font-size: .68rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .flow { padding: 1.2rem; }
+    .flow-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-top: 1rem; }
+    .mini { padding: 1rem; border-left: 3px solid rgba(255,255,255,.34); border-radius: 0 var(--radius) var(--radius) 0; background: rgba(10,17,29,.38); }
+    .mini.hot { border-left-color: var(--red); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: .9rem 1rem; border-bottom: 1px solid var(--line); text-align: right; }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--muted); background: rgba(10,17,29,.38); font-size: .7rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    td { font-variant-numeric: tabular-nums; }
+    .hot-text { color: var(--red); font-weight: 900; }
+    .panel-title { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); background: rgba(10,17,29,.3); }
+    .panel-title span { color: var(--muted); font-size: .68rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    @media (max-width: 1050px) { .top-metrics { display: none; } .shell { grid-template-columns: 1fr; } .sidebar { position: static; max-height: none; } .scout-body, .kpis, .stat-grid, .flow-row { grid-template-columns: 1fr; } .grade-panel, .stat-col { border-right: 0; border-bottom: 1px solid var(--line); } }
+    @media print { @page { size: letter landscape; margin: .3in; } body { background: #fff; color: #16324a; } body::before, .topbar, .sidebar { display: none; } .shell { display: block; width: 100%; margin: 0; } .main { display: block; } .panel, .card { break-inside: avoid; margin-bottom: .12in; border: 1px solid #d8dee8; background: #fff; color: #16324a; box-shadow: none; } .scout-body, .kpis, .flow-row, .stat-grid { grid-template-columns: repeat(3, 1fr); } .grade-panel { border-right: 1px solid #d8dee8; } .stat-col { border-right: 1px solid #d8dee8; } th { color: #fff; background: #16324a; } td, th { padding: .12in; } .money { font-size: 20pt; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="stripe"></div>
+    <div class="top-inner">
+      <div class="brand"><p>Hospice Provider &middot; Sales Intelligence</p><h1>Rep <span>Cost</span> Calculator</h1></div>
+      <div class="top-metrics" aria-label="Live unit costs">
+        <div><span>Per Call</span><strong data-out="costPerCall">$0</strong></div>
+        <div><span>Per Referral</span><strong data-out="costPerReferral">$0</strong></div>
+        <div><span>Per Admit</span><strong data-out="costPerAdmit">$0</strong></div>
+        <button class="print-btn" type="button" onclick="window.print()">Print Report</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Calculator inputs">
+      <h2 class="section-title">Compensation</h2>
+      <div id="inputs"></div>
+      <h2 class="section-title">Commission Tiers</h2>
+      <div id="tiers"></div>
+    </aside>
+
+    <main class="main">
+      <section class="panel">
+        <div class="scout-head"><div class="grade-lockup"><div class="grade-badge" data-out="grade">B</div><div><h2>Rep Economics Report</h2><p class="sub"><span data-out="annualAdmits">0</span> admits/yr &middot; <span data-out="verdictLabel">Solid Contributor</span></p></div></div><p class="sub" data-out="verdictText"></p></div>
+        <div class="scout-body"><div class="grade-panel"><span>Overall Grade</span><strong data-out="grade">B</strong><p class="sub"><span data-out="weakestFactor">Call Efficiency</span> is the weakest factor</p></div><div class="stat-grid"><div class="stat-col"><div class="label">Cost Per Sales Call</div><div class="money" data-out="costPerCall">$0</div><div class="sub">every call, win or lose</div></div><div class="stat-col"><div class="label">Cost Per Referral</div><div class="money" data-out="costPerReferral">$0</div><div class="sub">average cost to generate</div></div><div class="stat-col"><div class="label">Cost Per Admit</div><div class="money" data-out="costPerAdmit">$0</div><div class="sub">fully loaded acquisition cost</div></div></div></div>
+      </section>
+
+      <section class="kpis">
+        <article class="card kpi"><div class="label">Cost Per Sales Call</div><div class="money" data-out="costPerCall">$0</div><div class="sub">Lead metric for rep efficiency</div><div class="formula">Fixed Cost / Total Calls</div></article>
+        <article class="card kpi"><div class="label">Lost Admissions / Month</div><div class="money" data-out="monthlyLostAdmissions">0</div><div class="sub"><span data-out="annualLostAdmissions">0</span> lost admissions per year</div><div class="formula">Referrals - Admissions</div></article>
+        <article class="card kpi hot"><div class="label">Annual Conversion Loss</div><div class="money" data-out="annualLostConversionCost">$0</div><div class="sub"><span data-out="monthlyLostConversionCost">$0</span> per month</div><div class="formula">Lost Admissions x Referral Cost</div></article>
+      </section>
+
+      <section class="panel flow"><div class="panel-title"><h2>Cost Flow</h2><span>Call to Referral to Patient</span></div><div class="flow-row"><div class="mini"><div class="label">1 Sales Call</div><div class="money" data-out="costPerCall">$0</div><div class="sub"><span data-out="monthlyCalls">0</span> calls/mo</div></div><div class="mini"><div class="label">1 Referral</div><div class="money" data-out="costPerReferral">$0</div><div class="sub"><span data-out="callsPerReferral">0</span> calls per referral</div></div><div class="mini hot"><div class="label">1 Admitted Patient</div><div class="money" data-out="costPerAdmit">$0</div><div class="sub"><span data-out="monthlyAdmits">0</span> admits/mo</div></div></div></section>
+
+      <section class="panel"><div class="panel-title"><h2>Unit Economics</h2><span>Monthly & Annual</span></div><table><thead><tr><th>Metric</th><th>Monthly</th><th>Annual</th></tr></thead><tbody id="activityRows"></tbody></table></section>
+      <section class="panel"><div class="panel-title"><h2>Cost Views</h2><span>Salary, Fixed, Blended</span></div><table><thead><tr><th>Metric</th><th>Salary Only</th><th>Fixed Fully Loaded</th><th>Blended w/ Commission</th></tr></thead><tbody id="costRows"></tbody></table></section>
+    </main>
+  </div>
+
+  <script>
+    const mileageRate = 0.67;
+    const state = { baseSalary: 90000, benefitsLoad: 42, annualMileage: 5400, otherFixedCosts: 15484, callsPerDay: 12, workingDaysPerMonth: 20, callsPerReferral: 8, conversionRate: 70, tiers: [{ min: 1, max: 10, rate: 100 }, { min: 11, max: 20, rate: 125 }, { min: 21, max: 999, rate: 150 }] };
+    const fields = [
+      ['baseSalary','Base Salary',50000,180000,1000,'money'], ['benefitsLoad','Benefits Load',25,60,1,'pct'], ['annualMileage','Annual Mileage',2000,20000,100,'num'], ['otherFixedCosts','Other Fixed Costs',5000,40000,500,'money'],
+      ['callsPerDay','Calls Per Day',4,25,1,'num'], ['workingDaysPerMonth','Working Days/Mo',15,23,1,'num'], ['callsPerReferral','Calls Per Referral',3,20,1,'num'], ['conversionRate','Referral to Admit',30,95,1,'pct']
+    ];
+    const money = n => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Number.isFinite(n) ? n : 0);
+    const num = n => new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 }).format(Number.isFinite(n) ? n : 0);
+    const fmt = (n, type) => type === 'money' ? money(n) : type === 'pct' ? `${num(n)}%` : num(n);
+    function renderInputs(){ document.getElementById('inputs').innerHTML = fields.map(([key,label,min,max,step,type]) => `<div class="field"><label for="${key}"><span>${label}</span><output id="out-${key}">${fmt(state[key], type)}</output></label><input id="${key}" type="range" min="${min}" max="${max}" step="${step}" value="${state[key]}" /></div>`).join(''); fields.forEach(([key,, , , , type]) => document.getElementById(key).addEventListener('input', e => { state[key] = Number(e.target.value); document.getElementById(`out-${key}`).textContent = fmt(state[key], type); calculate(); })); }
+    function renderTiers(active){ document.getElementById('tiers').innerHTML = state.tiers.map((tier, i) => `<div class="tier ${active === tier ? 'active' : ''}">${active === tier ? '<small>Active Tier</small>' : ''}<div class="tier-grid"><input aria-label="Tier ${i+1} min" type="number" value="${tier.min}" data-tier="${i}" data-prop="min" /><input aria-label="Tier ${i+1} max" type="number" value="${tier.max === 999 ? '' : tier.max}" placeholder="Max" data-tier="${i}" data-prop="max" /><input aria-label="Tier ${i+1} commission" type="number" value="${tier.rate}" data-tier="${i}" data-prop="rate" /><div class="sub">Per Credit</div></div></div>`).join(''); document.querySelectorAll('[data-tier]').forEach(input => input.addEventListener('input', e => { const t = state.tiers[Number(e.target.dataset.tier)]; t[e.target.dataset.prop] = e.target.value === '' && e.target.dataset.prop === 'max' ? 999 : Number(e.target.value); calculate(); })); }
+    function scoreLower(val, t){ return val <= t[0] ? 4 : val <= t[1] ? 3 : val <= t[2] ? 2 : val <= t[3] ? 1 : 0; }
+    function scoreHigher(val, t){ return val >= t[0] ? 4 : val >= t[1] ? 3 : val >= t[2] ? 2 : val >= t[3] ? 1 : 0; }
+    function calculate(){
+      const fixed = state.baseSalary + state.baseSalary * state.benefitsLoad / 100 + state.annualMileage * mileageRate + state.otherFixedCosts;
+      const monthlyCalls = state.callsPerDay * state.workingDaysPerMonth;
+      const monthlyRefs = monthlyCalls / state.callsPerReferral;
+      const monthlyAdmits = monthlyRefs * state.conversionRate / 100;
+      const lostAdmissions = Math.max(0, monthlyRefs - monthlyAdmits);
+      const active = state.tiers.find(t => monthlyAdmits >= t.min && monthlyAdmits <= t.max) || state.tiers[0];
+      const monthlyCommission = monthlyAdmits * active.rate;
+      const annualCommission = monthlyCommission * 12;
+      const costPerCall = fixed / (monthlyCalls * 12);
+      const costPerReferral = fixed / (monthlyRefs * 12);
+      const costPerAdmit = fixed / (monthlyAdmits * 12);
+      const monthlyLoss = lostAdmissions * costPerReferral;
+      const annualLoss = monthlyLoss * 12;
+      const costMultiple = costPerAdmit / costPerCall;
+      const scores = { callCost: scoreLower(costPerCall,[55,75,95,120]), referralCost: scoreLower(costPerReferral,[400,600,800,1100]), admitCost: scoreLower(costPerAdmit,[600,800,1100,1500]), conversionRate: scoreHigher(state.conversionRate,[80,70,60,50]), callsPerReferral: scoreLower(state.callsPerReferral,[4,6,8,10]), costMultiple: scoreLower(costMultiple,[12,16,22,28]) };
+      const avg = Object.values(scores).reduce((a,b)=>a+b,0) / 6;
+      const grade = avg >= 3.5 ? 'A' : avg >= 2.8 ? 'B' : avg >= 2 ? 'C' : avg >= 1.2 ? 'D' : 'F';
+      const verdicts = { A:['Contender Asset','Elite efficiency. This rep is outperforming standard market cost structures significantly.'], B:['Solid Contributor','Above average performance. Strong unit economics with minor room for optimization.'], C:['League Average','Standard production. Performing at baseline cost expectations.'], D:['Under Contract','Struggling efficiency. Sunk costs are eating into the margin on admissions.'], F:['Rebuild','Critical inefficiency. Activity metrics do not justify the fixed overhead.'] };
+      const factorNames = { callCost:'Call Efficiency', referralCost:'Referral Cost', admitCost:'Admit Cost', conversionRate:'Conversion Rate', callsPerReferral:'Calls/Referral', costMultiple:'Cost Multiple' };
+      const weakest = Object.keys(scores).sort((a,b)=>scores[a]-scores[b])[0];
+      const data = { fixed, monthlyCalls, monthlyRefs, monthlyAdmits, annualAdmits: monthlyAdmits*12, monthlyLostAdmissions: lostAdmissions, annualLostAdmissions: lostAdmissions*12, monthlyLostConversionCost: monthlyLoss, annualLostConversionCost: annualLoss, monthlyCommission, annualCommission, costPerCall, costPerReferral, costPerAdmit, grade, verdictLabel: verdicts[grade][0], verdictText: verdicts[grade][1], weakestFactor: factorNames[weakest], callsPerReferral: state.callsPerReferral };
+      for (const [key, value] of Object.entries(data)) document.querySelectorAll(`[data-out="${key}"]`).forEach(node => node.textContent = key.toLowerCase().includes('cost') || key.includes('Commission') || key === 'fixed' ? money(value) : num(value));
+      document.querySelectorAll('[data-out="grade"]').forEach(n => n.textContent = grade);
+      document.querySelector('[data-out="verdictLabel"]').textContent = data.verdictLabel;
+      document.querySelector('[data-out="verdictText"]').textContent = data.verdictText;
+      document.getElementById('activityRows').innerHTML = [['Sales Calls', monthlyCalls, monthlyCalls*12], ['Referrals Generated', monthlyRefs, monthlyRefs*12], ['Admissions', monthlyAdmits, monthlyAdmits*12], ['Lost Admissions', lostAdmissions, lostAdmissions*12, true], ['Lost Conversion Cost', monthlyLoss, annualLoss, true, true]].map(r => `<tr><td class="${r[3]?'hot-text':''}">${r[0]}</td><td class="${r[3]?'hot-text':''}">${r[4]?money(r[1]):num(r[1])}</td><td class="${r[3]?'hot-text':''}">${r[4]?money(r[2]):num(r[2])}</td></tr>`).join('');
+      const blended = fixed + annualCommission, totalCalls = monthlyCalls*12, totalRefs = monthlyRefs*12, totalAdmits = monthlyAdmits*12;
+      document.getElementById('costRows').innerHTML = [['Annual Rep Cost', state.baseSalary, fixed, blended], ['Monthly Rep Cost', state.baseSalary/12, fixed/12, blended/12], ['Cost Per Call', state.baseSalary/totalCalls, costPerCall, blended/totalCalls], [`Cost Per Referral (${state.callsPerReferral}x)`, state.baseSalary/totalRefs, costPerReferral, blended/totalRefs], ['Cost Per Admitted Patient', state.baseSalary/totalAdmits, costPerAdmit, blended/totalAdmits], ['Annual Commission', 0, 0, annualCommission]].map(r => `<tr><td>${r[0]}</td><td>${money(r[1])}</td><td>${money(r[2])}</td><td class="hot-text">${money(r[3])}</td></tr>`).join('');
+      renderTiers(active);
+    }
+    renderInputs(); calculate();
+  </script>
+</body>
+</html>
