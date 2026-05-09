@@ -18,13 +18,15 @@ Use WordPress/Hostinger for live edits:
 Current important WordPress pages:
 
 - Home: `/`
-- Apps & Websites: `/apps-websites/`
+- TD Lab: `/td-lab/`
 - Family: `/family/`
 - Updates: `/updates/`
 - About: `/about/`
 - Contact: `/contact/`
 - Archive placeholder: `/archive/`
 - Private Lab placeholder: `/private-lab/`
+
+Legacy note: `/apps-websites/` redirects to `/td-lab/`.
 
 Current standalone app paths hosted under WordPress/Hostinger:
 
