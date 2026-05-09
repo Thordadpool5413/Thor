@@ -1,47 +1,38 @@
-# ThorDad static website (Hostinger-ready)
+# ThorDad website
 
-This project is a plain static site (HTML/CSS/JavaScript) and can be deployed directly to Hostinger without a Node/Python runtime.
+## Current live setup
 
-## Files to upload
-Upload everything in this folder to your Hostinger `public_html` directory:
+The live site at `thordad.com` is currently managed through **WordPress on Hostinger**, using the active custom block theme `thordad-editable`.
 
-- `index.html`
-- `about.html`
-- `family.html`
-- `updates.html`
-- `lab.html`
-- `archive.html`
-- `private-lab.html`
-- `contact.html`
-- `styles.css`
-- `script.js`
-- `.htaccess`
+Do **not** deploy this static GitHub repository directly into Hostinger `public_html` while WordPress is installed. Doing that can overwrite or hide the WordPress site.
 
-## Hostinger deployment steps
-1. Open Hostinger hPanel.
-2. Go to **Websites** → **Manage** → **File Manager**.
-3. Open `public_html`.
-4. Delete old site files (or back them up first).
-5. Upload this repo's files directly into `public_html`.
-6. Ensure `index.html` is present in `public_html`.
-7. Clear Hostinger cache/CDN if enabled.
-8. Hard refresh your browser (`Ctrl+F5` / `Cmd+Shift+R`).
+## Live source of truth
 
-## Runtime stack
-- Static HTML/CSS/JavaScript
-- No framework required
-- No build command required
+Use WordPress/Hostinger for live edits:
 
-## Notes
-- `.htaccess` enables extensionless routes (e.g., `/about` → `about.html`) and caching rules optimized for Hostinger/Apache.
+1. Log in to WordPress for `thordad.com`.
+2. Use `Pages` to edit page content.
+3. Use `Appearance -> Editor` to edit the block theme header, footer, and templates.
+4. Keep LiteSpeed Cache disabled while actively editing, or clear cache after changes.
 
-## Hostinger Git Deploy (if using Node.js Web App importer)
-If Hostinger shows **"Unsupported framework or invalid project structure"** while importing from Git:
+Current important WordPress pages:
 
-1. Choose **Node.js 24** runtime.
-2. Choose framework type **Other/Custom**.
-3. Set project root to `/`.
-4. Set build command to `npm run build`.
-5. Set output/public directory to `/` (root).
+- Home: `/`
+- Apps & Websites: `/apps-websites/`
+- Family: `/family/`
+- Updates: `/updates/`
+- About: `/about/`
+- Contact: `/contact/`
+- Archive placeholder: `/archive/`
+- Private Lab placeholder: `/private-lab/`
 
-This repo includes a minimal `package.json` so Hostinger's framework detection can proceed even though this is a static site.
+Current standalone app paths hosted under WordPress/Hostinger:
+
+- Hospice Roadmap: `/apps/websites/hospice-roadmap/`
+- Hospice Provider Sales Intelligence Rep Cost Calculator: `/apps/hospice-rep-cost-calculator/`
+
+## What this repo is now
+
+This repo contains the older static HTML/CSS/JavaScript version of the ThorDad site. It can still be useful as a backup/reference, but it is **not** the live editing source while WordPress is active.
+
+If you later decide to stop using WordPress and return to a static site, then this repo can be deployed again after backing up or removing the WordPress install.
